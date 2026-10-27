@@ -7,5 +7,30 @@ title: "my_penguins"
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
 ```{r}
-1 + 1
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+penguins |>
+  group_by(bill_length_mm) |>
+  summarize()
+```
+
+```{r}
+penguins |>
+  drop_na(flipper_length_mm, body_mass_g) |>
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  geom_point(alpha = 0.7, size = 2) +
+  labs(
+    title = "Bigger penguins have longer flippers",
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species"
+  ) +
+  theme_minimal()
+```
+
+```{python}
+
 ```
